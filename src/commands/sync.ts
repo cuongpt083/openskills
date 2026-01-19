@@ -5,6 +5,7 @@ import { checkbox } from '@inquirer/prompts';
 import { ExitPromptError } from '@inquirer/core';
 import { findAllSkills } from '../utils/skills.js';
 import { generateSkillsXml, replaceSkillsSection, parseCurrentSkills, removeSkillsSection } from '../utils/agents-md.js';
+import { syncAgentRules } from '../utils/agent-rules.js';
 import type { Skill } from '../types.js';
 
 export interface SyncOptions {
@@ -106,4 +107,7 @@ export async function syncAgentsMd(options: SyncOptions = {}): Promise<void> {
   } else {
     console.log(chalk.green(`✅ Added skills section to ${outputName} (${skills.length} skill(s))`));
   }
+
+  // Always sync agent rules/workflows
+  syncAgentRules();
 }

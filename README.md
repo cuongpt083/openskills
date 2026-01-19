@@ -172,9 +172,11 @@ npx openskills install anthropics/skills --universal
 
 ```bash
 npx openskills install <source> [options]  # Install from GitHub, local path, or private repo
-npx openskills sync [-y] [-o <path>]       # Update AGENTS.md (or custom output)
+npx openskills sync [-y] [-o <path>]       # Update AGENTS.md & .agent/workflows/
 npx openskills list                        # Show installed skills
 npx openskills read <name>                 # Load skill (for agents)
+npx openskills init <name> [--antigravity] # Initialize a new skill template
+npx openskills validate <name>             # Check Antigravity compatibility
 npx openskills update [name...]            # Update installed skills (default: all)
 npx openskills manage                      # Remove skills (interactive)
 npx openskills remove <name>               # Remove specific skill

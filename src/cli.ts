@@ -8,6 +8,8 @@ import { removeSkill } from './commands/remove.js';
 import { manageSkills } from './commands/manage.js';
 import { syncAgentsMd } from './commands/sync.js';
 import { updateSkills } from './commands/update.js';
+import { initSkill } from './commands/init.js';
+import { validateSkill } from './commands/validate.js';
 import { createRequire } from 'module';
 
 const program = new Command();
@@ -42,6 +44,12 @@ program
   .action(listSkills);
 
 program
+  .command('init <name>')
+  .description('Initialize a new skill template')
+  .option('--antigravity', 'Optimize for Antigravity Agent')
+  .action(initSkill);
+
+program
   .command('install <source>')
   .description('Install skill from GitHub or Git URL')
   .option('-g, --global', 'Install globally (default: project install)')
@@ -65,6 +73,11 @@ program
   .option('-y, --yes', 'Skip interactive selection, sync all skills')
   .option('-o, --output <path>', 'Output file path (default: AGENTS.md)')
   .action(syncAgentsMd);
+
+program
+  .command('validate <skill-names...>')
+  .description('Check skill compatibility with Antigravity Agent tools')
+  .action(validateSkill);
 
 program
   .command('manage')
